@@ -1,12 +1,12 @@
-package logics;
+package yamaza520.logics;
 
 import java.util.List;
 
-import models.Task;
+import yamaza520.models.Task;
 import play.Logger;
 import play.db.ebean.Transactional;
 
-public class TestLogic {
+public class TaskLogic {
 
     public static int iterate(int arg) {
         return arg + 1;

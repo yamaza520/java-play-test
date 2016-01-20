@@ -1,11 +1,11 @@
-package controllers;
+package yamaza520.controllers.sample;
 
-import models.ApiResponse;
+import yamaza520.controllers.BaseController;
+import yamaza520.response.ApiResponse;
 import play.libs.Json;
-import play.mvc.Controller;
 import play.mvc.Result;
 
-public class SampleApi extends Controller {
+public class SampleApiController extends BaseController {
 
     public Result index() {
         ApiResponse res = new ApiResponse();

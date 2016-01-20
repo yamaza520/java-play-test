@@ -1,0 +1,8 @@
+# Routes
+# This file defines all application routes (Higher priority routes first)
+# ~~~~
+
+# Home page
+GET     /                           yamaza520.controllers.sample.HealthController.index()
+
+GET     /api                        yamaza520.controllers.sample.SampleApiController.index()

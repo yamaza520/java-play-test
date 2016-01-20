@@ -1,4 +1,4 @@
-package models;
+package yamaza520.models;
 
 import com.avaje.ebean.Model;
 import com.avaje.ebean.annotation.CreatedTimestamp;
@@ -11,12 +11,14 @@ import javax.persistence.Id;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 import play.data.format.Formats;
 import play.data.validation.Constraints;
 
 @Entity
 @Data
 @AllArgsConstructor
+@EqualsAndHashCode(callSuper = false)
 public class Task extends Model {
 
     @Id
@@ -33,9 +35,10 @@ public class Task extends Model {
     @Formats.DateTime(pattern = "yyyy-MM-dd'T'HH:mm")
     public Date updatedDate;
 
-    public static Finder<Long, Task> find = new Finder<Long, Task>(Task.class);
+    public static Finder<Long, Task> find = new Finder<>(Task.class);
 
     public Task getById(Long id) {
         return find.byId(id);
     }
+
 }

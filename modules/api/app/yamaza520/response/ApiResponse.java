@@ -1,4 +1,4 @@
-package models;
+package yamaza520.response;
 
 import lombok.Data;
 
@@ -6,5 +6,4 @@ import lombok.Data;
 public class ApiResponse {
 
     public int status;
-
 }
