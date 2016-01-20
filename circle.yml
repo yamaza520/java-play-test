@@ -1,7 +1,10 @@
 machine:
+  timezone: Asia/Tokyo
   environment:
     SBT_VERSION: 0.13.9
     SBT_OPTS: "-Xms512M -Xmx1536M -Xss1M -XX:+CMSClassUnloadingEnabled -XX:MaxPermSize=256M"
+  java:
+      version: oraclejdk8
 
 dependencies:
 #  pre:
