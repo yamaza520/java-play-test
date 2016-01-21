@@ -8,21 +8,17 @@ REGION="ap-northeast-1"
 DIR="/path/to/your/deploy/dir/"
 ZIPNAME="api-1.0.0.zip"
 
-ETAG="efa37560756ee73917680ef3c0ebce86"
-
-# S3にzipをpushする
-#S3INFO=`${AWSCOMMAND} deploy push \
-#          --application-name ${APPLICATIONNAME} \
-#          --s3-location s3://${BUCKETNAME}/${ZIPNAME} \
-#          --source ${DIR} \
-#          --region ${REGION} | grep eTag`
-#ETAG=`expr "${S3INFO}" : '.*eTag="\(.*\)"'`
-
+# get s3 file etag
+S3INFO=`${AWSCOMMAND} s3api head-object \
+           --bucket ${BUCKETNAME} \
+           --key ${ZIPNAME}`
+ETAG=`expr "${S3INFO}" : '.*"ETag": "."\(.*\)."",'`
+echo "get S3 info"
 echo ${S3INFO}
-echo
-echo ${ETAG}
 
-# zipをEC2にデプロイする
+# deploy EC2 (call CodeDeploy)
+echo ""
+echo "start deploy"
 ${AWSCOMMAND} deploy create-deployment \
    --application-name ${APPLICATIONNAME} \
    --s3-location bucket=${BUCKETNAME},key=${ZIPNAME},bundleType=zip,eTag=${ETAG} \

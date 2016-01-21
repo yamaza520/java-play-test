@@ -17,8 +17,8 @@ test:
   override:
     - sbt api/compile
     - sbt api/dist
+    # appspecをtopフォルダに含めるために。。。
     - mv ./modules/api/target/universal/${APP_VERSION}.zip .
-    - ls
     - unzip ${APP_VERSION}.zip
     - mv ${APP_VERSION}/appspec.yml .
     - rm ${APP_VERSION}.zip
