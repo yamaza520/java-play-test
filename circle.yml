@@ -17,6 +17,12 @@ test:
   override:
     - sbt api/compile
     - sbt api/dist
+    - cd ./modules/api/target/universal
+    - unzip ${APP_VERSION}.zip
+    - mv api-1.0.0/appspec.yml .
+    - rm api-1.0.0.zip
+    - zip -r api-1.0.0.zip api-1.0.0 appspec.yml
+    - cd
 
 deployment:
   production:
