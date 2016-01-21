@@ -6,7 +6,7 @@ import sbt._
 
 trait PlayTestCommon extends Build {
   // リリースする場合はバージョンを変えること
-  lazy val _version = "1.0.0-SNAPSHOT"
+  lazy val _version = "1.0.0"
 
   // published dependency version
   lazy val _scalaVersion = "2.11.6"
