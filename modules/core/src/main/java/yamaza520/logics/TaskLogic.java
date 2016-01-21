@@ -26,7 +26,7 @@ public class TaskLogic {
 
     /**
      * contents is america?
-     * @param task
+     * @param task Task
      * @return true america
      */
     public static boolean isAmerica(Task task) {
