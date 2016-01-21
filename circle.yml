@@ -17,12 +17,12 @@ test:
   override:
     - sbt api/compile
     - sbt api/dist
-    - cd ./modules/api/target/universal
+    - mv ./modules/api/target/universal/${APP_VERSION}.zip .
+    - ls
     - unzip ${APP_VERSION}.zip
-    - mv api-1.0.0/appspec.yml .
-    - rm api-1.0.0.zip
+    - mv ${APP_VERSION}/appspec.yml .
+    - rm ${APP_VERSION}.zip
     - zip -r api-1.0.0.zip api-1.0.0 appspec.yml
-    - cd
 
 deployment:
   production:
@@ -39,4 +39,4 @@ deployment:
 #        deployment_group: codedeploy-sample-group
     commands:
       - aws s3 cp
-        ./modules/api/target/universal/${APP_VERSION}.zip s3://circleci-sample-bucket/ --region ap-northeast-1
+        ./${APP_VERSION}.zip s3://circleci-sample-bucket/ --region ap-northeast-1
