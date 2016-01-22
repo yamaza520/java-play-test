@@ -16,7 +16,7 @@ dependencies:
 test:
   override:
     - sbt api/compile
-    - sbt api/dist
+    - sbt api/dist -Dconfig.resource=env/prd.conf
     # appspecをtopフォルダに含めるために。。。
     - mv ./modules/api/target/universal/${APP_VERSION}.zip .
     - unzip ${APP_VERSION}.zip

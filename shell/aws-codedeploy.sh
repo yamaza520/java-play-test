@@ -1,12 +1,15 @@
 #!/bin/bash
 
+BUILD=`grep  _version ../project/Build.scala`
+VERSION=`expr "${BUILD}" : '.*_version = "\([0-9\.]*\)"'`
+ZIPNAME="api-${VERSION}.zip"
+
 AWSCOMMAND="aws --profile yamaza"
 APPLICATIONNAME="PlayDeployApp"
 GROUPNAME="PlayDeployAppGroup"
 BUCKETNAME="circleci-sample-bucket"
 REGION="ap-northeast-1"
 DIR="/path/to/your/deploy/dir/"
-ZIPNAME="api-1.0.0.zip"
 
 # get s3 file etag
 S3INFO=`${AWSCOMMAND} s3api head-object \
