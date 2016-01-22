@@ -3,15 +3,19 @@ os: linux
 files:
   - source: /
     destination: /var/play/
-#hooks:
-#  BeforeInstall:
-#    - location: scripts/install_dependencies
-#      timeout: 300
-#      runas: root
-#    - location: scripts/start_server
-#      timeout: 300
-#      runas: root
-#  ApplicationStop:
-#    - location: scripts/stop_server
-#      timeout: 300
-#      runas: root
+hooks:
+  BeforeInstall:
+    - location: mv api before_api
+      timeout: 300
+      runas: root
+    - location: mv api-* api
+      timeout: 300
+      runas: root
+  ApplicationStop:
+    - location: /etc/init.d/play stop
+      timeout: 300
+      runas: root
+  ApplicationStart:
+    - location: /etc/init.d/play start
+      timeout: 300
+      runas: root

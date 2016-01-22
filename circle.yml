@@ -22,7 +22,7 @@ test:
     - unzip ${APP_VERSION}.zip
     - mv ${APP_VERSION}/appspec.yml .
     - rm ${APP_VERSION}.zip
-    - zip -r api-1.0.0.zip api-1.0.0 appspec.yml
+    - zip -r ${APP_VERSION}.zip ${APP_VERSION} appspec.yml
 
 deployment:
   production:

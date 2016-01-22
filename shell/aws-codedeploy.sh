@@ -1,8 +1,10 @@
 #!/bin/bash
+echo "deploy start api"
 
 BUILD=`grep  _version ../project/Build.scala`
 VERSION=`expr "${BUILD}" : '.*_version = "\([0-9\.]*\)"'`
 ZIPNAME="api-${VERSION}.zip"
+echo "version=${VERSION}"
 
 AWSCOMMAND="aws --profile yamaza"
 APPLICATIONNAME="PlayDeployApp"
