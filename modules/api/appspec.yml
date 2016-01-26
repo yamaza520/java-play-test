@@ -3,18 +3,15 @@ os: linux
 files:
   - source: /
     destination: /var/play/
-#hooks:
-#  BeforeInstall:
-#    - location: mv api before_api
-#      timeout: 300
-#      runas: root
-#    - location: mv api-* api
-#      timeout: 300
-#      runas: root
-#  ApplicationStop:
-#    - location: /etc/init.d/play stop
-#      timeout: 300
-#      runas: root
+hooks:
+  BeforeInstall:
+    - location: shell/appspec-BeforeInstall.sh
+      timeout: 300
+      runas: rl_app
+  ApplicationStop:
+    - location: shell/appspec-ApplicationStop.sh
+      timeout: 300
+      runas: rl_app
 #  ApplicationStart:
 #    - location: /etc/init.d/play start
 #      timeout: 300
