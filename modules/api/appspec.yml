@@ -8,11 +8,15 @@ hooks:
     - location: shell/appspec-BeforeInstall.sh
       timeout: 300
       runas: rl_app
+  AfterInstall:
+    - location: shell/appspec-AfterInstall.sh
+      timeout: 300
+      runas: rl_app
   ApplicationStop:
     - location: shell/appspec-ApplicationStop.sh
       timeout: 300
       runas: rl_app
-#  ApplicationStart:
-#    - location: /etc/init.d/play start
-#      timeout: 300
-#      runas: root
+  ApplicationStart:
+    - location: shell/appspec-ApplicationStart.sh
+      timeout: 300
+      runas: rl_app
