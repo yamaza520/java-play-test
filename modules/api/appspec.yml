@@ -15,8 +15,8 @@ hooks:
   ApplicationStop:
     - location: shell/appspec-ApplicationStop.sh
       timeout: 300
-      runas: rl_app
+      runas: root
   ApplicationStart:
     - location: shell/appspec-ApplicationStart.sh
       timeout: 300
-      runas: rl_app
+      runas: root
