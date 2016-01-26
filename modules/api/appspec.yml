@@ -7,11 +7,11 @@ hooks:
   BeforeInstall:
     - location: shell/appspec-BeforeInstall.sh
       timeout: 300
-      runas: rl_app
+      runas: root
   AfterInstall:
     - location: shell/appspec-AfterInstall.sh
       timeout: 300
-      runas: rl_app
+      runas: root
   ApplicationStop:
     - location: shell/appspec-ApplicationStop.sh
       timeout: 300
