@@ -2,7 +2,11 @@
 echo "appspec BeforeInstall"
 
 # delete backup
-rm -rf /var/play/before_api
+if [ -e /var/play/before_api ]; then
+    rm -rf /var/play/before_api
+fi
 
 # backup
-mv /var/play/api /var/play/before_api
+if [ -e /var/play/api ]; then
+    mv /var/play/api /var/play/before_api
+fi
