@@ -16,13 +16,13 @@ dependencies:
 test:
   override:
     - sbt api/compile
-    - sbt api/dist -Dconfig.resource=env/prd.conf
-    # appspecをtopフォルダに含めるために。。。
+    - sbt api/dist
+    # appspecとsehllをtopフォルダに含めるために。。。
     - mv ./modules/api/target/universal/${APP_VERSION}.zip .
     - unzip ${APP_VERSION}.zip
     - mv ${APP_VERSION}/appspec.yml .
     - rm ${APP_VERSION}.zip
-    - zip -r ${APP_VERSION}.zip ${APP_VERSION} appspec.yml
+    - zip -r ${APP_VERSION}.zip ${APP_VERSION} appspec.yml shell
 
 deployment:
   production:
